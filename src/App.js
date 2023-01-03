@@ -1,23 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import Testimonio from './components/Testimonio';
+import testimoniosData from './testimonios.json';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className='container-principal'>
+        <h1 className='title'> Esto es lo que dicen nuestros alumnos sobre freeCodeCamp:</h1>
+        {/* De esta forma se consumen los datos desde un archivo json
+        y por cada objeto del archivo se creara un componente nuevo */}
+        {testimoniosData.map(testimonio =>
+          <Testimonio 
+          key = {testimonio.name}
+          imagen = {testimonio.imagen}
+          name = {testimonio.name}
+          pais = {testimonio.pais}
+          cargo = {testimonio.cargo}
+          empresa = {testimonio.empresa}
+          testimonio ={testimonio.testimonio}
+        />
+        )}
+      </div>
     </div>
   );
 }
